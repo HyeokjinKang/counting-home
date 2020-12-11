@@ -4,7 +4,7 @@ const update = () => {
   if(d.getHours() >= 9) {
     remain = ((5 - d.getDay()) * 24 * 60 * 60) + ((32 - d.getHours()) * 60 * 60) + ((59 - d.getMinutes()) * 60) + (60 - d.getSeconds());
   } else {
-    remain = ((5 - d.getDay()) * 24 * 60 * 60) + ((9 - d.getHours()) * 60 * 60) + ((59 - d.getMinutes()) * 60) + (60 - d.getSeconds());
+    remain = ((5 - d.getDay()) * 24 * 60 * 60) + ((8 - d.getHours()) * 60 * 60) + ((59 - d.getMinutes()) * 60) + (60 - d.getSeconds());
   }
   let day = Math.floor(remain / 86400);
   let hour = Math.floor((remain - day * 86400) / 3600);
