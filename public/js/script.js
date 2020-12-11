@@ -18,3 +18,5 @@ const update = () => {
 };
 
 setInterval(update, 1000);
+
+update();
