@@ -10,7 +10,7 @@ const isMobile = () => {
 const update = () => {
   let d = new Date();
   let remain = 0;
-  if(d.getDay <= 5) {
+  if(d.getDay() <= 5) {
     if(d.getHours() >= 9) {
       remain = ((5 - d.getDay()) * 24 * 60 * 60) + ((32 - d.getHours()) * 60 * 60) + ((59 - d.getMinutes()) * 60) + (60 - d.getSeconds());
     } else {
