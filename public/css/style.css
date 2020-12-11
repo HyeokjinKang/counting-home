@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&display=swap');
+
+body {
+  background-color: #eee;
+  background-image: url('../resources/background.png');
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Noto Sans KR', '나눔바른고딕', arial;
+  letter-spacing: -2px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#titleContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#mainTitle {
+  background: linear-gradient(to right bottom, #FF8B06, #FF6666);
+  filter: drop-shadow(0 0 5px #FC00003E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 7vh;
+  font-weight: 900;
+}
+
+#mainContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#homeNoticeText {
+  color: #777;
+  font-size: 3.5vh;
+  font-weight: 700;
+}
+
+#homeRemainText {
+  color: #222;
+  font-size: 6vh;
+  font-weight: 500;
+  background: linear-gradient(to bottom, #00000000 64%, #FF7738 65%, #FF7738 84%, #00000000 85%);
+}
+
+.remainText {
+  font-weight: 900;
+}
