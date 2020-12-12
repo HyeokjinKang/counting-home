@@ -1,3 +1,11 @@
+const isMobile = () => {
+	if(navigator.userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+		return true;
+	} else {
+		return false;
+	}
+};
+
 const update = () => {
   let d = new Date();
   let remain = 0;
@@ -22,6 +30,14 @@ const update = () => {
   }
 };
 
-setInterval(update, 1000);
+const initialize = () => {
+  if(isMobile()) {
+    mainTitle.style.fontSize = '13vw';
+    homeRemainText.style.fontSize = '9vw';
+    homeNoticeText.style.fontSize = '5vw';
+  }
+  setInterval(update, 1000);
+  update();
+};
 
-update();
+initialize();
