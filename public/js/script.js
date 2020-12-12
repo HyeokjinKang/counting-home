@@ -41,4 +41,8 @@ const initialize = () => {
   update();
 };
 
+<<<<<<< HEAD
 initialize();
+=======
+update();
+>>>>>>> 12f0ea19a3c83fe5a5a798e20431cdc889895ed6
