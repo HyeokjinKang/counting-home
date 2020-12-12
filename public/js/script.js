@@ -1,5 +1,6 @@
 const isMobile = () => {
-	if(navigator.userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+  let userAgent = navigator.userAgent;
+	if(userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
 		return true;
 	} else {
 		return false;
@@ -20,9 +21,9 @@ const update = () => {
     let min = Math.floor((remain - day * 86400 - hour * 3600) / 60);
     let sec = Math.floor(remain - day * 86400 - hour * 3600 - min * 60);
     dayText.innerText = day;
-    hourText.innerText = hour;
-    minText.innerText = min;
-    secText.innerText = sec;
+    hourText.innerText = `${hour}`.padStart(2, '0');
+    minText.innerText = `${min}`.padStart(2, '0');
+    secText.innerText = `${sec}`.padStart(2, '0');
   } else {
     homeNoticeText.textContent = '짜잔';
     homeRemainText.style.fontWeight = '900';
