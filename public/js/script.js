@@ -1,17 +1,17 @@
 const isMobile = () => {
   let userAgent = navigator.userAgent;
-	if(userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
-		return true;
-	} else {
-		return false;
-	}
+  if (userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 const update = () => {
   let d = new Date();
   let remain = 0;
-  if(d.getDay() <= 5) {
-    if(d.getHours() >= 9) {
+  if (d.getDay() <= 5) {
+    if (d.getHours() >= 9) {
       remain = ((5 - d.getDay()) * 24 * 60 * 60) + ((32 - d.getHours()) * 60 * 60) + ((59 - d.getMinutes()) * 60) + (60 - d.getSeconds());
     } else {
       remain = ((5 - d.getDay()) * 24 * 60 * 60) + ((10 - d.getHours()) * 60 * 60) + ((59 - d.getMinutes()) * 60) + (60 - d.getSeconds());
@@ -32,12 +32,16 @@ const update = () => {
 };
 
 const initialize = () => {
-  if(isMobile()) {
+  if (isMobile()) {
     mainTitle.style.fontSize = '13vw';
     homeRemainText.style.fontSize = '9vw';
     homeNoticeText.style.fontSize = '5vw';
   }
   setInterval(update, 1000);
+  let d = new Date();
+  let hour = parseInt(d.getHours());
+  if (hour <= 7 || hour >= 18)
+    document.body.classList.toggle("dark-mode");
   update();
 };
 

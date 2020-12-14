@@ -16,6 +16,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.dark-mode {
+  background-color: #121212;
+  background-image: url('../resources/background2.png');
+}
+
 #titleContainer {
   position: fixed;
   left: 0;
@@ -45,10 +50,14 @@ body {
   align-items: center;
 }
 
-#homeNoticeText {
+.homeNoticeText {
   color: #777;
   font-size: 3.5vh;
   font-weight: 700;
+}
+
+.dark-mode > #mainContainer > .homeNoticeText { 
+  color: #555555;
 }
 
 #homeRemainText {
@@ -60,4 +69,9 @@ body {
 
 .remainText {
   font-weight: 900;
+}
+
+.dark-mode > #mainContainer > #homeRemainText { 
+  color: #c7c7c7;
+  background: linear-gradient(to bottom, #00000000 64%, #813c1d 65%, #813c1d 84%, #00000000 85%);
 }
