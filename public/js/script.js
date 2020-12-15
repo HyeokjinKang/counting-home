@@ -40,6 +40,7 @@ const initialize = () => {
   setInterval(update, 1000);
   setInterval(isDay, 60000);
   update();
+  isDay();
 };
 
 const isDay = () => {
