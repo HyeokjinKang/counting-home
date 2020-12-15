@@ -17,7 +17,7 @@ body {
 }
 
 .dark-mode {
-  background-color: #222;
+  background-color: #1b1b1b;
   background-image: url('../resources/background2.png');
 }
 
@@ -72,6 +72,6 @@ body {
 }
 
 .dark-mode > #mainContainer > #homeRemainText { 
-  color: #c7c7c7;
+  color: #eee;
   background: linear-gradient(to bottom, #00000000 64%, #813c1d 65%, #813c1d 84%, #00000000 85%);
 }
