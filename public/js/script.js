@@ -38,11 +38,18 @@ const initialize = () => {
     homeNoticeText.style.fontSize = '5vw';
   }
   setInterval(update, 1000);
+  setInterval(isDay, 60000);
+  update();
+};
+
+const isDay = () => {
   let d = new Date();
   let hour = parseInt(d.getHours());
-  if (hour <= 7 || hour >= 18)
-    document.body.classList.toggle("dark-mode");
-  update();
+  if(hour <= 7 || hour >= 19) {
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
+  }
 };
 
 initialize();
