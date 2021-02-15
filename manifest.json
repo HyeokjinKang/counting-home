@@ -1,0 +1,17 @@
+{
+  "name": "집 가고 싶다",
+  "short_name": "집 가고 싶다",
+  "icons": [{
+    "src": "public/resources/icon-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }, {
+    "src": "public/resources/icon-152x152.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "start_url": "./index.html?utm_source=homescreen",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF"
+}

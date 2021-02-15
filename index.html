@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./public/css/style.css?pub=1.6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="집 가고 싶다">
+  <link rel="apple-touch-icon" href="public/resources/icon-152x152.png">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+      .then((reg) => {
+        console.log('서비스 워커가 등록됨.', reg);
+      });
+    }
+  </script>
   <title>집 가고 싶다</title>
 </head>
 <body>
@@ -11,7 +24,7 @@
     <span id="mainTitle">집 가고 싶다</span>
   </div>
   <div id="mainContainer">
-    <span class="homeNoticeText">귀가까지</span>
+    <span id="homeNoticeText" class="homeNoticeText">귀가까지</span>
     <span id="homeRemainText">
       <span id="dayText" class="remainText">D</span>일 
       <span id="hourText" class="remainText">H</span>시간 
