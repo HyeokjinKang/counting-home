@@ -1,5 +1,5 @@
-const homeDays = ["May 04, 2021 08:00:00", "June 05, 2020 08:00:00", ""];
-const schoolDays = ["May 23, 2021 18:00:00", "June 20, 2020 18:00:00", ""];
+const homeDays = ["May 04, 2021 08:00:00", "June 05, 2021 08:00:00", ""];
+const schoolDays = ["May 23, 2021 18:00:00", "June 20, 2021 18:00:00", ""];
 
 const isMobile = () => {
   let userAgent = navigator.userAgent;
@@ -17,28 +17,32 @@ const isMobile = () => {
 
 const update = () => {
   let now = new Date();
-  let nextHomeday = new Date(homeDays[0]);
-  let nextSchoolday = new Date(schoolDays[0]);
-  if (nextHomeday.getTime() < nextSchoolday.getTime()) {
-    let remain = Math.floor((nextHomeday.getTime() - now.getTime()) / 1000);
-
-    let day = Math.floor(remain / 86400);
-    remain -= day * 86400;
-    let hour = Math.floor(remain / 3600);
-    remain -= hour * 3600;
-    let min = Math.floor(remain / 60);
-    remain -= min * 60;
-    let sec = remain;
-
-    dayText.innerText = day;
-    hourText.innerText = `${hour}`.padStart(2, "0");
-    minText.innerText = `${min}`.padStart(2, "0");
-    secText.innerText = `${sec}`.padStart(2, "0");
+  let nextHomedays = new Date(homeDays[0]);
+  let nextSchooldays = new Date(schoolDays[0]);
+  let goal;
+  if (nextHomedays < nextSchooldays) {
+    mainTitle.innerText = "집 가고 싶다";
+    homeNoticeText.innerText = "귀가까지";
+    goal = nextHomedays;
   } else {
-    homeNoticeText.textContent = "짜잔";
-    homeRemainText.style.fontWeight = "900";
-    homeRemainText.textContent = "귀가완료!";
+    mainTitle.innerText = "학교 가기 싫다";
+    homeNoticeText.innerText = "귀교까지";
+    goal = nextSchooldays;
   }
+  let remain = Math.floor((goal.getTime() - now.getTime()) / 1000);
+
+  let day = Math.floor(remain / 86400);
+  remain -= day * 86400;
+  let hour = Math.floor(remain / 3600);
+  remain -= hour * 3600;
+  let min = Math.floor(remain / 60);
+  remain -= min * 60;
+  let sec = remain;
+
+  dayText.innerText = day;
+  hourText.innerText = `${hour}`.padStart(2, "0");
+  minText.innerText = `${min}`.padStart(2, "0");
+  secText.innerText = `${sec}`.padStart(2, "0");
 };
 
 const initialize = () => {
