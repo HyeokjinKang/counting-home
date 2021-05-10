@@ -1,5 +1,5 @@
-const homeDays = ["June 05, 2021 08:00:00", ""];
-const schoolDays = ["May 23, 2021 18:00:00", "June 20, 2021 18:00:00", ""];
+let goal = -1;
+let isHome = true;
 
 const isMobile = () => {
   let userAgent = navigator.userAgent;
@@ -16,20 +16,21 @@ const isMobile = () => {
 };
 
 const update = () => {
+  if(goal == -1) return;
   let now = new Date();
-  let nextHomedays = new Date(homeDays[0]);
-  let nextSchooldays = new Date(schoolDays[0]);
-  let goal;
-  if (nextHomedays < nextSchooldays) {
+  if (isHome) {
     mainTitle.innerText = "집 가고 싶다";
     homeNoticeText.innerText = "귀가까지";
-    goal = nextHomedays;
   } else {
     mainTitle.innerText = "학교 가기 싫다";
     homeNoticeText.innerText = "귀교까지";
-    goal = nextSchooldays;
   }
   let remain = Math.floor((goal.getTime() - now.getTime()) / 1000);
+  if(remain <= 0) {
+    goal = -1;
+    updateDate();
+    return;
+  }
 
   let day = Math.floor(remain / 86400);
   remain -= day * 86400;
@@ -53,6 +54,7 @@ const initialize = () => {
   }
   setInterval(update, 1000);
   setInterval(isDay, 60000);
+  updateDate();
   update();
   isDay();
 };
@@ -65,6 +67,15 @@ const isDay = () => {
   } else {
     document.body.classList.remove("dark-mode");
   }
+};
+
+const updateDate = () => {
+  fetch('https://api.coupy.dev/getSchedule/comming')
+  .then(res => res.json())
+  .then(json => {
+    isHome = json.type == "Home";
+    goal = new Date(json.date);
+  });
 };
 
 initialize();

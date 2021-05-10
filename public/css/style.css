@@ -14,6 +14,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   -webkit-font-smoothing: antialiased;
+  transition-duration: 3s;
 }
 
 .dark-mode {
