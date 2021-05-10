@@ -1,4 +1,4 @@
-const homeDays = ["May 04, 2021 08:00:00", "June 05, 2021 08:00:00", ""];
+const homeDays = ["June 05, 2021 08:00:00", ""];
 const schoolDays = ["May 23, 2021 18:00:00", "June 20, 2021 18:00:00", ""];
 
 const isMobile = () => {
