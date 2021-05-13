@@ -39,7 +39,7 @@ const update = () => {
   let min = Math.floor(remain / 60);
   remain -= min * 60;
   let sec = remain;
-
+  
   dayText.innerText = day;
   hourText.innerText = `${hour}`.padStart(2, "0");
   minText.innerText = `${min}`.padStart(2, "0");
@@ -61,12 +61,20 @@ const initialize = () => {
 
 const isDay = () => {
   let now = new Date();
-  let hour = now.getHours();
-  if (hour <= 7 || hour >= 19) {
-    document.body.classList.add("dark-mode");
-  } else {
-    document.body.classList.remove("dark-mode");
-  }
+  fetch('https://api.sunrise-sunset.org/json?lat=37.566215&lng=126.978422')
+  .then(response => {
+  if(response.status===200) { return response.json(); }
+  })
+  .then(response => {
+    sunrise = parseDate(response.results.sunrise);
+    sunset = parseDate(response.results.sunset);
+    
+    if (now <= sunrise || now >= sunset) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
 };
 
 const updateDate = () => {
@@ -77,5 +85,19 @@ const updateDate = () => {
     goal = new Date(json.date);
   });
 };
+
+const parseDate = (tmp) => {
+  let result = new Date();
+
+  tmp = tmp.split(':');
+  if(tmp[2].endsWith('PM')) { tmp[0] = parseInt(tmp[0]) + 21; }
+  else { tmp[0] = parseInt(tmp[0]) + 9; }
+  
+  result.setHours(tmp[0] % 24);
+  result.setMinutes(parseInt(tmp[1]));
+  result.setSeconds(parseInt(tmp[2].slice(0, -3)));
+
+  return result;
+}
 
 initialize();
