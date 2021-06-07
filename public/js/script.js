@@ -90,13 +90,7 @@ const updateDate = () => {
     .then((res) => res.json())
     .then((json) => {
       isHome = json.type == "Home";
-      if (new Date().getMonth() == 5 && new Date().getDate() == 4) {
-        goal = new Date("Fri Jun 04 2021 17:00:00 GMT+0900");
-      } else if (new Date().getMonth() == 5 && new Date().getDate() == 5) {
-        goal = false;
-      } else {
-        goal = new Date(json.date);
-      }
+      goal = new Date(json.date);
     });
 };
 
